@@ -11,14 +11,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception
 	{
-		web.ignoring().antMatchers("/**");
+		//web.ignoring().antMatchers("/**");
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/mypage").authenticated();
-		// /mypage url에 부분 인증페이지를 줘보자. 
-		//
+			.antMatchers("/**").permitAll()				//모든 페이지에 접속 권한을 부여 한 
+			.antMatchers("/mypage").authenticated();	//mypage에다가 부분별로 인증요구 
 	}
 }
